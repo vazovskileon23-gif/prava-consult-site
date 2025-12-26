@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Юридическая консультация по водительским правам — онлайн</title>
-  <meta name="description" content="Разъясним ситуацию по водительскому удостоверению и подскажем законные варианты действий. Онлайн-консультация. Telegram и WhatsApp." />
+  <meta name="description" content="Разъясним ситуацию по водительскому удостоверению и подскажем возможные решения. Онлайн-консультация. Telegram и WhatsApp." />
 
   <style>
     :root{
@@ -18,9 +18,8 @@
       --accent:#6ee7ff;
       --accent2:#a78bfa;
       --ok:#22c55e;
-      --warn:#fbbf24;
       --r:18px;
-      --shadow: 0 18px 50px rgba(0,0,0,.35);
+      --shadow: 0 16px 44px rgba(0,0,0,.32);
       --w: 1120px;
     }
     *{box-sizing:border-box}
@@ -46,8 +45,8 @@
     }
     .top__in{
       display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0;
-      gap:14px;
+      padding:12px 0;
+      gap:12px;
     }
     .mark{
       display:flex; align-items:center; gap:12px;
@@ -57,13 +56,29 @@
     .mark__logo{
       width:38px; height:38px; border-radius:14px;
       background: linear-gradient(135deg, var(--accent2), var(--accent));
-      box-shadow: 0 14px 30px rgba(167,139,250,.25);
+      box-shadow: 0 14px 30px rgba(167,139,250,.22);
+      display:grid;
+      place-items:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .mark__logo::after{
+      content:"✓";
+      font-weight:1000;
+      font-size:18px;
+      color:#07101f;
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(255,255,255,.40);
+      width:22px; height:22px;
+      border-radius:9px;
+      display:grid; place-items:center;
+      box-shadow: 0 10px 18px rgba(0,0,0,.18);
     }
     .mark__sub{
       display:block;
       font-size:12px;
       color:var(--muted);
-      font-weight:700;
+      font-weight:750;
       margin-top:2px;
     }
     .top__badge{
@@ -74,7 +89,7 @@
       background: rgba(255,255,255,.05);
       color:var(--muted);
       font-size:13px;
-      font-weight:800;
+      font-weight:850;
       white-space:nowrap;
     }
     .dot{
@@ -83,12 +98,12 @@
       box-shadow: 0 0 0 5px rgba(34,197,94,.16);
     }
 
-    /* Layout */
-    .hero{padding:34px 0 18px}
+    /* Layout (more compact) */
+    .hero{padding:22px 0 12px}
     .grid{
       display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:16px;
+      grid-template-columns: 1.05fr .95fr;
+      gap:14px;
       align-items:stretch;
     }
     .panel{
@@ -98,108 +113,130 @@
       box-shadow: var(--shadow);
       overflow:hidden;
     }
-    .panel__pad{padding:22px}
+    .panel__pad{padding:18px}
     h1{
-      margin:12px 0 10px;
-      font-size: clamp(28px, 3.2vw, 44px);
+      margin:6px 0 8px;
+      font-size: clamp(26px, 3.0vw, 40px);
       line-height:1.08;
       letter-spacing:-.6px;
     }
     .lead{
       margin:0;
       color:var(--muted);
-      font-size: 16.5px;
-      max-width: 62ch;
+      font-size: 15.8px;
+      max-width: 66ch;
     }
 
-    /* Feature chips */
-    .chips{display:flex; flex-wrap:wrap; gap:10px; margin-top:16px}
+    /* Chips (tight) */
+    .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
     .chip{
       display:inline-flex; align-items:center; gap:8px;
-      padding:9px 12px;
+      padding:8px 10px;
       border-radius: 999px;
       border:1px solid var(--line);
       background: rgba(255,255,255,.05);
-      font-weight:850;
-      color: rgba(238,242,255,.86);
-      font-size:13px;
+      font-weight:900;
+      color: rgba(238,242,255,.88);
+      font-size:12.5px;
     }
-    .chip b{color:var(--text)}
     .chip__i{
-      width:22px; height:22px; border-radius:8px;
+      width:20px; height:20px; border-radius:8px;
       display:grid; place-items:center;
       background: rgba(255,255,255,.07);
       border:1px solid rgba(255,255,255,.10);
-      font-size:13px;
+      font-size:12px;
     }
 
-    /* Steps */
-    .steps{margin-top:16px; display:grid; gap:10px}
+    /* Steps (compact, 2 columns on desktop) */
+    .steps{margin-top:12px; display:grid; gap:8px}
+    @media (min-width: 981px){
+      .steps{grid-template-columns:1fr 1fr}
+      .steps .step:nth-child(3){grid-column:1 / -1;}
+    }
     .step{
-      display:flex; gap:12px; align-items:flex-start;
-      padding:12px;
+      display:flex; gap:10px; align-items:flex-start;
+      padding:10px;
       border-radius: 14px;
       border:1px solid var(--line);
       background: rgba(255,255,255,.04);
     }
     .n{
       flex:0 0 auto;
-      width:30px; height:30px; border-radius:12px;
+      width:28px; height:28px; border-radius:11px;
       display:grid; place-items:center;
-      font-weight:950;
+      font-weight:1000;
       background: rgba(167,139,250,.16);
       border:1px solid rgba(167,139,250,.28);
       color: rgba(238,242,255,.95);
+      font-size:13px;
+      margin-top:1px;
     }
-    .step__t{font-weight:950; margin:0 0 2px}
-    .step__d{margin:0; color:var(--muted); font-weight:650; font-size:14px}
+    .step__t{font-weight:1000; margin:0 0 1px; font-size:14px}
+    .step__d{margin:0; color:var(--muted); font-weight:650; font-size:13px}
 
     /* Buttons */
-    .actions{display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:16px}
+    .actions{display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:12px}
     .btn{
       display:flex; align-items:center; justify-content:center;
-      padding:13px 14px;
+      padding:12px 12px;
       border-radius: 16px;
       border:1px solid var(--line);
       background: rgba(255,255,255,.06);
-      font-weight:950;
-      box-shadow: 0 10px 26px rgba(0,0,0,.25);
+      font-weight:1000;
+      box-shadow: 0 10px 24px rgba(0,0,0,.22);
       transition: .16s ease;
       text-align:center;
       user-select:none;
+      min-height:46px;
     }
     .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09)}
     .btn--tg{
       border:none;
       background: linear-gradient(135deg, rgba(110,231,255,.95), rgba(167,139,250,.92));
       color: #07101f;
-      box-shadow: 0 18px 35px rgba(110,231,255,.18);
+      box-shadow: 0 16px 30px rgba(110,231,255,.16);
     }
     .btn--wa{
       border:none;
       background: linear-gradient(135deg, #25D366, #15b853);
       color:#07101f;
-      box-shadow: 0 18px 35px rgba(37,211,102,.20);
+      box-shadow: 0 16px 30px rgba(37,211,102,.18);
+    }
+    .btn--ghost{
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.18);
+      color: rgba(238,242,255,.92);
+      box-shadow:none;
+    }
+    .btn small{
+      display:block;
+      font-size:11px;
+      font-weight:850;
+      opacity:.82;
+      margin-top:2px;
     }
 
-    /* Right card: mini-info + visual */
+    /* Right (license + buttons under it) */
     .side{
-      display:grid;
-      grid-template-rows: auto 1fr auto;
-      min-height: 100%;
+      display:flex;
+      flex-direction:column;
+      min-height:100%;
     }
     .side__head{
-      padding:18px 18px 0;
+      padding:16px 16px 0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
     }
     .side__title{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:12px;
       margin:0;
       font-weight:1000;
       letter-spacing:-.2px;
+      font-size:16px;
     }
     .tag{
-      padding:8px 10px;
+      padding:7px 10px;
       border-radius: 999px;
       border:1px solid var(--line);
       background: rgba(255,255,255,.05);
@@ -209,74 +246,38 @@
       white-space:nowrap;
     }
 
-    .visual{
-      margin:14px 18px;
-      border-radius: 18px;
-      border:1px solid rgba(255,255,255,.12);
+    .license-wrap{
+      margin:12px 16px 0;
+      width: calc(100% - 32px);
+      aspect-ratio: 1.6 / 1;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.14);
       background:
-        radial-gradient(180px 120px at 18% 30%, rgba(110,231,255,.20), transparent 65%),
-        radial-gradient(220px 140px at 85% 25%, rgba(167,139,250,.22), transparent 65%),
-        rgba(255,255,255,.04);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+        radial-gradient(220px 140px at 18% 30%, rgba(110,231,255,.18), transparent 65%),
+        radial-gradient(240px 160px at 85% 25%, rgba(167,139,250,.22), transparent 65%),
+        rgba(255,255,255,.05);
+      box-shadow: 0 18px 40px rgba(0,0,0,.26);
       overflow:hidden;
-      position:relative;
-      min-height: 230px;
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      padding:16px;
-      gap:12px;
     }
-    .visual__card{
-      width: 64%;
-      min-height: 150px;
-      border-radius: 16px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      box-shadow: 0 16px 34px rgba(0,0,0,.25);
-      padding:14px;
-    }
-    .row{display:flex; gap:10px; align-items:center}
-    .avatar{
-      width:44px; height:44px; border-radius: 16px;
-      background: rgba(110,231,255,.18);
-      border:1px solid rgba(110,231,255,.22);
-      display:grid; place-items:center;
-      font-size:20px;
-    }
-    .lines{margin-top:10px; display:grid; gap:8px}
-    .line{
-      height:12px; border-radius: 999px;
-      background: rgba(238,242,255,.14);
-    }
-    .line.s{width:72%}
-    .line.m{width:88%}
-    .line.l{width:95%}
-    .stamp{
-      width: 34%;
-      border-radius: 16px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.05);
-      padding:14px;
-      display:grid;
-      gap:8px;
-      align-content:start;
-      text-align:left;
-    }
-    .stamp b{font-weight:1000}
-    .stamp small{color:var(--muted); font-weight:700}
 
-    .side__foot{
-      padding:0 18px 18px;
+    .side__cta{
+      padding:12px 16px 0;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
+
+    .side__note{
+      padding:10px 16px 14px;
       color: var(--muted);
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight:700;
     }
 
-    /* Footer + legal */
+    /* Legal + footer compact */
     .legal{
-      margin-top:14px;
-      padding:14px 16px;
+      margin-top:10px;
+      padding:12px 14px;
       border:1px solid var(--line);
       border-radius: 16px;
       background: rgba(255,255,255,.04);
@@ -285,13 +286,13 @@
       font-weight:650;
     }
     footer{
-      padding:18px 0 26px;
-      color: rgba(238,242,255,.60);
+      padding:14px 0 18px;
+      color: rgba(238,242,255,.58);
       font-size:12px;
       text-align:center;
     }
 
-    /* Mobile fixed WA */
+    /* Mobile */
     .wa-fixed{
       position:fixed;
       left:16px; right:16px; bottom:14px;
@@ -308,11 +309,11 @@
 
     @media (max-width: 980px){
       .grid{grid-template-columns:1fr}
+      .top__badge{display:none}
     }
     @media (max-width: 720px){
-      .top__badge{display:none}
       .actions{grid-template-columns:1fr}
-      .visual{min-height: 210px}
+      .side__cta{grid-template-columns:1fr}
       .wa-fixed{display:block}
       .mob-pad{display:block; height:84px}
     }
@@ -325,7 +326,7 @@
       <div class="mark" aria-label="Бренд">
         <div class="mark__logo" aria-hidden="true"></div>
         <div>
-          <div>Юридическая консультация</div>
+          <div>Юридическая помощь</div>
           <span class="mark__sub">Конфиденциально • Онлайн • По всей России</span>
         </div>
       </div>
@@ -343,24 +344,24 @@
       <!-- LEFT -->
       <section class="panel">
         <div class="panel__pad">
-          <h1>Разъясним ситуацию с водительским удостоверением и подскажем законные шаги</h1>
+          <h1>Разъясним ситуацию с водительским удостоверением и подскажем возможные решения</h1>
           <p class="lead">
-            Опишите проблему — мы спокойно разберём детали и предложим понятные варианты действий.
-            Общение проходит онлайн, без лишних звонков и форм.
+            Опишите проблему — разберём детали и объясним, какие законные варианты обычно доступны.
+            Общение в чате, спокойно и по делу.
           </p>
 
           <div class="chips" aria-label="Преимущества">
-            <div class="chip"><span class="chip__i" aria-hidden="true">🕒</span><b>Быстро</b> — ответ в чате</div>
-            <div class="chip"><span class="chip__i" aria-hidden="true">🔒</span><b>Конфиденциально</b> — без публикаций</div>
-            <div class="chip"><span class="chip__i" aria-hidden="true">📍</span><b>Россия</b> — работаем дистанционно</div>
+            <div class="chip"><span class="chip__i" aria-hidden="true">⚡</span>Быстро в переписке</div>
+            <div class="chip"><span class="chip__i" aria-hidden="true">🔒</span>Конфиденциально</div>
+            <div class="chip"><span class="chip__i" aria-hidden="true">📍</span>Дистанционно</div>
           </div>
 
           <div class="steps" aria-label="Как проходит консультация">
             <div class="step">
               <div class="n">1</div>
               <div>
-                <p class="step__t">Пишете в мессенджер</p>
-                <p class="step__d">Коротко опишите, что произошло и какие документы/решения есть на руках (если есть).</p>
+                <p class="step__t">Пишите в мессенджер</p>
+                <p class="step__d">Коротко: что случилось и когда. Можно без лишних деталей.</p>
               </div>
             </div>
 
@@ -368,15 +369,15 @@
               <div class="n">2</div>
               <div>
                 <p class="step__t">Уточняем детали</p>
-                <p class="step__d">Зададим несколько вопросов, чтобы понять контекст и риски без догадок.</p>
+                <p class="step__d">Пара вопросов — чтобы понять ситуацию и избежать ошибок.</p>
               </div>
             </div>
 
             <div class="step">
               <div class="n">3</div>
               <div>
-                <p class="step__t">Даём варианты действий</p>
-                <p class="step__d">Подскажем возможные законные сценарии и что можно сделать дальше.</p>
+                <p class="step__t">Предлагаем возможные решения</p>
+                <p class="step__d">Расскажем варианты и порядок действий, что сделать в первую очередь.</p>
               </div>
             </div>
           </div>
@@ -405,41 +406,101 @@
       </section>
 
       <!-- RIGHT -->
-      <aside class="panel side" aria-label="Доверие и формат">
+      <aside class="panel side" aria-label="Макет и быстрые действия">
         <div class="side__head">
-          <p class="side__title">
-            Формат работы
-            <span class="tag">онлайн-чат</span>
-          </p>
+          <p class="side__title">Формат работы</p>
+          <span class="tag">онлайн-чат</span>
         </div>
 
-        <div class="visual" aria-hidden="true">
-          <div class="visual__card">
-            <div class="row">
-              <div class="avatar">⚖️</div>
-              <div>
-                <div style="font-weight:1000; line-height:1.1;">Юридические разъяснения</div>
-                <div style="color:var(--muted); font-weight:750; font-size:13px;">по ситуациям с правами</div>
-              </div>
-            </div>
-            <div class="lines">
-              <div class="line l"></div>
-              <div class="line m"></div>
-              <div class="line s"></div>
-            </div>
-          </div>
+        <div class="license-wrap" aria-label="Стилизованный макет водительского удостоверения">
+          <svg viewBox="0 0 640 400" width="100%" height="100%" role="img" aria-label="Driver license illustration">
+            <defs>
+              <linearGradient id="lg1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="rgba(255,255,255,.92)"/>
+                <stop offset="1" stop-color="rgba(238,242,255,.70)"/>
+              </linearGradient>
+              <linearGradient id="lg2" x1="1" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="rgba(167,139,250,.35)"/>
+                <stop offset="1" stop-color="rgba(110,231,255,.25)"/>
+              </linearGradient>
+              <filter id="sh" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="10" result="b"/>
+                <feColorMatrix in="b" type="matrix"
+                  values="1 0 0 0 0
+                          0 1 0 0 0
+                          0 0 1 0 0
+                          0 0 0 .22 0" result="s"/>
+                <feMerge>
+                  <feMergeNode in="s"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
 
-          <div class="stamp">
-            <b>Важно</b>
-            <small>Мы не обещаем “результат”, а анализируем ситуацию и предлагаем законные варианты.</small>
-            <div style="margin-top:6px; font-weight:950; color:rgba(238,242,255,.9);">
-              🟡 Индивидуально
-            </div>
-          </div>
+            <rect x="0" y="0" width="640" height="400" rx="28" fill="url(#lg1)"/>
+            <path d="M520 -40 L720 140 L260 600 L60 420 Z" fill="url(#lg2)" opacity="0.95"/>
+            <circle cx="520" cy="285" r="76" fill="rgba(110,231,255,.14)" stroke="rgba(110,231,255,.30)" stroke-width="4"/>
+
+            <text x="40" y="72" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+                  font-size="26" font-weight="900" fill="rgba(7,16,31,.78)">
+              DRIVER LICENSE
+            </text>
+            <text x="40" y="102" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+                  font-size="16" font-weight="800" fill="rgba(25,60,120,.70)">
+              Sample • Consultation
+            </text>
+
+            <g filter="url(#sh)">
+              <rect x="40" y="140" width="150" height="190" rx="22" fill="rgba(255,255,255,.75)" stroke="rgba(0,0,0,.06)"/>
+              <circle cx="115" cy="205" r="42" fill="rgba(25,60,120,.18)"/>
+              <path d="M75 300c18-34 62-34 80 0" fill="rgba(25,60,120,.18)"/>
+            </g>
+
+            <g fill="rgba(7,16,31,.22)">
+              <rect x="220" y="150" width="360" height="14" rx="7"/>
+              <rect x="220" y="178" width="300" height="14" rx="7"/>
+              <rect x="220" y="206" width="340" height="14" rx="7"/>
+              <rect x="220" y="234" width="260" height="14" rx="7"/>
+              <rect x="220" y="262" width="310" height="14" rx="7"/>
+            </g>
+
+            <g>
+              <rect x="40" y="350" width="270" height="22" rx="11" fill="rgba(7,16,31,.12)"/>
+              <text x="52" y="366"
+                    font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace"
+                    font-size="14" font-weight="900" fill="rgba(7,16,31,.55)">
+                ID: HELPPRAVA-STORE
+              </text>
+            </g>
+          </svg>
         </div>
 
-        <div class="side__foot">
-          Если удобно — напишите кратко: что произошло, когда, и есть ли документы/постановления.
+        <!-- Buttons under image (fills the right empty space) -->
+        <div class="side__cta" aria-label="Быстрые кнопки">
+          <a class="btn btn--tg"
+             href="https://t.me/evgeniy_pravahelper"
+             target="_blank" rel="noopener nofollow">
+            Telegram<br><small>написать сейчас</small>
+          </a>
+          <a class="btn btn--wa"
+             href="https://wa.me/79290217097?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9D%D1%83%D0%B6%D0%BD%D0%B0%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8F%20%D0%BF%D0%BE%20%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%BC%20%D0%BF%D1%80%D0%B0%D0%B2%D0%B0%D0%BC.%20%D0%9F%D0%B8%D1%88%D1%83%20%D1%81%20%D1%80%D0%B5%D0%BA%D0%BB%D0%B0%D0%BC%D1%8B%20%D0%92%D0%9A."
+             target="_blank" rel="noopener nofollow">
+            WhatsApp<br><small>быстрый чат</small>
+          </a>
+          <a class="btn btn--ghost"
+             href="https://wa.me/79290217097?text=%D0%9A%D0%BE%D1%80%D0%BE%D1%82%D0%BA%D0%BE%3A%20%D1%87%D1%82%D0%BE%20%D0%BF%D1%80%D0%BE%D0%B8%D0%B7%D0%BE%D1%88%D0%BB%D0%BE%2C%20%D0%BA%D0%BE%D0%B3%D0%B4%D0%B0%2C%20%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D1%8B%20%D0%B5%D1%81%D1%82%D1%8C%20(%D0%B5%D1%81%D0%BB%D0%B8%20%D0%B5%D1%81%D1%82%D1%8C)."
+             target="_blank" rel="noopener nofollow">
+            Шаблон сообщения<br><small>вставить и отправить</small>
+          </a>
+          <a class="btn btn--ghost"
+             href="https://t.me/evgeniy_pravahelper"
+             target="_blank" rel="noopener nofollow">
+            Задать вопрос<br><small>без звонков</small>
+          </a>
+        </div>
+
+        <div class="side__note">
+          Напишите кратко: что произошло, когда, и есть ли документы/постановления (если есть).
         </div>
       </aside>
 
