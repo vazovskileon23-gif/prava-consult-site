@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Юридическая консультация по водительским правам — онлайн</title>
+  <meta name="description" content="Разъясним ситуацию по водительскому удостоверению и подскажем законные варианты действий. Онлайн-консультация. Telegram и WhatsApp." />
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --bg2:#0f1b33;
+      --card:rgba(255,255,255,.06);
+      --card2:rgba(255,255,255,.10);
+      --text:#eef2ff;
+      --muted:rgba(238,242,255,.72);
+      --line:rgba(255,255,255,.12);
+      --accent:#6ee7ff;
+      --accent2:#a78bfa;
+      --ok:#22c55e;
+      --warn:#fbbf24;
+      --r:18px;
+      --shadow: 0 18px 50px rgba(0,0,0,.35);
+      --w: 1120px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(900px 480px at 10% 0%, rgba(167,139,250,.20), transparent 60%),
+        radial-gradient(900px 520px at 100% 10%, rgba(110,231,255,.18), transparent 58%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(var(--w), calc(100% - 32px)); margin:0 auto}
+
+    /* Header */
+    .top{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter: blur(12px);
+      background: rgba(11,18,32,.55);
+      border-bottom:1px solid var(--line);
+    }
+    .top__in{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
+    }
+    .mark{
+      display:flex; align-items:center; gap:12px;
+      font-weight:900;
+      letter-spacing:.2px;
+    }
+    .mark__logo{
+      width:38px; height:38px; border-radius:14px;
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      box-shadow: 0 14px 30px rgba(167,139,250,.25);
+    }
+    .mark__sub{
+      display:block;
+      font-size:12px;
+      color:var(--muted);
+      font-weight:700;
+      margin-top:2px;
+    }
+    .top__badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background: rgba(255,255,255,.05);
+      color:var(--muted);
+      font-size:13px;
+      font-weight:800;
+      white-space:nowrap;
+    }
+    .dot{
+      width:9px; height:9px; border-radius:50%;
+      background: var(--ok);
+      box-shadow: 0 0 0 5px rgba(34,197,94,.16);
+    }
+
+    /* Layout */
+    .hero{padding:34px 0 18px}
+    .grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:16px;
+      align-items:stretch;
+    }
+    .panel{
+      border:1px solid var(--line);
+      border-radius: var(--r);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .panel__pad{padding:22px}
+    h1{
+      margin:12px 0 10px;
+      font-size: clamp(28px, 3.2vw, 44px);
+      line-height:1.08;
+      letter-spacing:-.6px;
+    }
+    .lead{
+      margin:0;
+      color:var(--muted);
+      font-size: 16.5px;
+      max-width: 62ch;
+    }
+
+    /* Feature chips */
+    .chips{display:flex; flex-wrap:wrap; gap:10px; margin-top:16px}
+    .chip{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:9px 12px;
+      border-radius: 999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      font-weight:850;
+      color: rgba(238,242,255,.86);
+      font-size:13px;
+    }
+    .chip b{color:var(--text)}
+    .chip__i{
+      width:22px; height:22px; border-radius:8px;
+      display:grid; place-items:center;
+      background: rgba(255,255,255,.07);
+      border:1px solid rgba(255,255,255,.10);
+      font-size:13px;
+    }
+
+    /* Steps */
+    .steps{margin-top:16px; display:grid; gap:10px}
+    .step{
+      display:flex; gap:12px; align-items:flex-start;
+      padding:12px;
+      border-radius: 14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+    }
+    .n{
+      flex:0 0 auto;
+      width:30px; height:30px; border-radius:12px;
+      display:grid; place-items:center;
+      font-weight:950;
+      background: rgba(167,139,250,.16);
+      border:1px solid rgba(167,139,250,.28);
+      color: rgba(238,242,255,.95);
+    }
+    .step__t{font-weight:950; margin:0 0 2px}
+    .step__d{margin:0; color:var(--muted); font-weight:650; font-size:14px}
+
+    /* Buttons */
+    .actions{display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:16px}
+    .btn{
+      display:flex; align-items:center; justify-content:center;
+      padding:13px 14px;
+      border-radius: 16px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      font-weight:950;
+      box-shadow: 0 10px 26px rgba(0,0,0,.25);
+      transition: .16s ease;
+      text-align:center;
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09)}
+    .btn--tg{
+      border:none;
+      background: linear-gradient(135deg, rgba(110,231,255,.95), rgba(167,139,250,.92));
+      color: #07101f;
+      box-shadow: 0 18px 35px rgba(110,231,255,.18);
+    }
+    .btn--wa{
+      border:none;
+      background: linear-gradient(135deg, #25D366, #15b853);
+      color:#07101f;
+      box-shadow: 0 18px 35px rgba(37,211,102,.20);
+    }
+
+    /* Right card: mini-info + visual */
+    .side{
+      display:grid;
+      grid-template-rows: auto 1fr auto;
+      min-height: 100%;
+    }
+    .side__head{
+      padding:18px 18px 0;
+    }
+    .side__title{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px;
+      margin:0;
+      font-weight:1000;
+      letter-spacing:-.2px;
+    }
+    .tag{
+      padding:8px 10px;
+      border-radius: 999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      color: var(--muted);
+      font-size:12px;
+      font-weight:900;
+      white-space:nowrap;
+    }
+
+    .visual{
+      margin:14px 18px;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(180px 120px at 18% 30%, rgba(110,231,255,.20), transparent 65%),
+        radial-gradient(220px 140px at 85% 25%, rgba(167,139,250,.22), transparent 65%),
+        rgba(255,255,255,.04);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+      overflow:hidden;
+      position:relative;
+      min-height: 230px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      padding:16px;
+      gap:12px;
+    }
+    .visual__card{
+      width: 64%;
+      min-height: 150px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      box-shadow: 0 16px 34px rgba(0,0,0,.25);
+      padding:14px;
+    }
+    .row{display:flex; gap:10px; align-items:center}
+    .avatar{
+      width:44px; height:44px; border-radius: 16px;
+      background: rgba(110,231,255,.18);
+      border:1px solid rgba(110,231,255,.22);
+      display:grid; place-items:center;
+      font-size:20px;
+    }
+    .lines{margin-top:10px; display:grid; gap:8px}
+    .line{
+      height:12px; border-radius: 999px;
+      background: rgba(238,242,255,.14);
+    }
+    .line.s{width:72%}
+    .line.m{width:88%}
+    .line.l{width:95%}
+    .stamp{
+      width: 34%;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      padding:14px;
+      display:grid;
+      gap:8px;
+      align-content:start;
+      text-align:left;
+    }
+    .stamp b{font-weight:1000}
+    .stamp small{color:var(--muted); font-weight:700}
+
+    .side__foot{
+      padding:0 18px 18px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight:700;
+    }
+
+    /* Footer + legal */
+    .legal{
+      margin-top:14px;
+      padding:14px 16px;
+      border:1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-size:12px;
+      font-weight:650;
+    }
+    footer{
+      padding:18px 0 26px;
+      color: rgba(238,242,255,.60);
+      font-size:12px;
+      text-align:center;
+    }
+
+    /* Mobile fixed WA */
+    .wa-fixed{
+      position:fixed;
+      left:16px; right:16px; bottom:14px;
+      z-index:50;
+      display:none;
+    }
+    .wa-fixed a{
+      width:100%;
+      border-radius:18px;
+      padding:14px 16px;
+      font-weight:1000;
+    }
+    .mob-pad{display:none; height:0}
+
+    @media (max-width: 980px){
+      .grid{grid-template-columns:1fr}
+    }
+    @media (max-width: 720px){
+      .top__badge{display:none}
+      .actions{grid-template-columns:1fr}
+      .visual{min-height: 210px}
+      .wa-fixed{display:block}
+      .mob-pad{display:block; height:84px}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top">
+    <div class="wrap top__in">
+      <div class="mark" aria-label="Бренд">
+        <div class="mark__logo" aria-hidden="true"></div>
+        <div>
+          <div>Юридическая консультация</div>
+          <span class="mark__sub">Конфиденциально • Онлайн • По всей России</span>
+        </div>
+      </div>
+
+      <div class="top__badge" aria-label="Статус">
+        <span class="dot" aria-hidden="true"></span>
+        Сейчас на связи
+      </div>
+    </div>
+  </div>
+
+  <main class="hero">
+    <div class="wrap grid">
+
+      <!-- LEFT -->
+      <section class="panel">
+        <div class="panel__pad">
+          <h1>Разъясним ситуацию с водительским удостоверением и подскажем законные шаги</h1>
+          <p class="lead">
+            Опишите проблему — мы спокойно разберём детали и предложим понятные варианты действий.
+            Общение проходит онлайн, без лишних звонков и форм.
+          </p>
+
+          <div class="chips" aria-label="Преимущества">
+            <div class="chip"><span class="chip__i" aria-hidden="true">🕒</span><b>Быстро</b> — ответ в чате</div>
+            <div class="chip"><span class="chip__i" aria-hidden="true">🔒</span><b>Конфиденциально</b> — без публикаций</div>
+            <div class="chip"><span class="chip__i" aria-hidden="true">📍</span><b>Россия</b> — работаем дистанционно</div>
+          </div>
+
+          <div class="steps" aria-label="Как проходит консультация">
+            <div class="step">
+              <div class="n">1</div>
+              <div>
+                <p class="step__t">Пишете в мессенджер</p>
+                <p class="step__d">Коротко опишите, что произошло и какие документы/решения есть на руках (если есть).</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="n">2</div>
+              <div>
+                <p class="step__t">Уточняем детали</p>
+                <p class="step__d">Зададим несколько вопросов, чтобы понять контекст и риски без догадок.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="n">3</div>
+              <div>
+                <p class="step__t">Даём варианты действий</p>
+                <p class="step__d">Подскажем возможные законные сценарии и что можно сделать дальше.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="actions" aria-label="Связаться">
+            <a class="btn btn--tg"
+               href="https://t.me/evgeniy_pravahelper"
+               target="_blank" rel="noopener nofollow">
+              💬 Написать в Telegram
+            </a>
+
+            <a class="btn btn--wa"
+               href="https://wa.me/79290217097?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9D%D1%83%D0%B6%D0%BD%D0%B0%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8F%20%D0%BF%D0%BE%20%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%BC%20%D0%BF%D1%80%D0%B0%D0%B2%D0%B0%D0%BC.%20%D0%9F%D0%B8%D1%88%D1%83%20%D1%81%20%D1%80%D0%B5%D0%BA%D0%BB%D0%B0%D0%BC%D1%8B%20%D0%92%D0%9A."
+               target="_blank" rel="noopener nofollow">
+              💬 Написать в WhatsApp
+            </a>
+          </div>
+
+          <div class="legal">
+            Консультация предоставляется бесплатно. Дальнейшая юридическая помощь — по согласованию.<br/>
+            Информация на странице носит справочный характер и не является публичной офертой.
+          </div>
+
+          <div class="mob-pad" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <!-- RIGHT -->
+      <aside class="panel side" aria-label="Доверие и формат">
+        <div class="side__head">
+          <p class="side__title">
+            Формат работы
+            <span class="tag">онлайн-чат</span>
+          </p>
+        </div>
+
+        <div class="visual" aria-hidden="true">
+          <div class="visual__card">
+            <div class="row">
+              <div class="avatar">⚖️</div>
+              <div>
+                <div style="font-weight:1000; line-height:1.1;">Юридические разъяснения</div>
+                <div style="color:var(--muted); font-weight:750; font-size:13px;">по ситуациям с правами</div>
+              </div>
+            </div>
+            <div class="lines">
+              <div class="line l"></div>
+              <div class="line m"></div>
+              <div class="line s"></div>
+            </div>
+          </div>
+
+          <div class="stamp">
+            <b>Важно</b>
+            <small>Мы не обещаем “результат”, а анализируем ситуацию и предлагаем законные варианты.</small>
+            <div style="margin-top:6px; font-weight:950; color:rgba(238,242,255,.9);">
+              🟡 Индивидуально
+            </div>
+          </div>
+        </div>
+
+        <div class="side__foot">
+          Если удобно — напишите кратко: что произошло, когда, и есть ли документы/постановления.
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <footer>
+    © 2025. Онлайн-консультации по вопросам водительского удостоверения.
+  </footer>
+
+  <!-- фикс-кнопка WhatsApp (моб) -->
+  <div class="wa-fixed">
+    <a class="btn btn--wa"
+       href="https://wa.me/79290217097?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9D%D1%83%D0%B6%D0%BD%D0%B0%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8F%20%D0%BF%D0%BE%20%D0%B2%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%BC%20%D0%BF%D1%80%D0%B0%D0%B2%D0%B0%D0%BC.%20%D0%9F%D0%B8%D1%88%D1%83%20%D1%81%20%D1%80%D0%B5%D0%BA%D0%BB%D0%B0%D0%BC%D1%8B%20%D0%92%D0%9A."
+       target="_blank" rel="noopener nofollow">
+      💬 Быстро написать в WhatsApp
+    </a>
+  </div>
+</body>
+</html>
